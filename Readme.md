@@ -11,4 +11,4 @@
 - Math
 - History
 - Civics
-- Tech
+- PTS
