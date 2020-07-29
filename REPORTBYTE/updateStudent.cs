@@ -23,7 +23,7 @@ namespace REPORTBYTE
             adapter.Fill(ds, "Name");
             int rowCount =  ds.Tables[0].Rows.Count;
             
-            for (int i=0; i<rowCount; i++)
+            for (int i=0; i<=rowCount; i++)
             {
                 int tot = 0;
 
@@ -68,7 +68,7 @@ namespace REPORTBYTE
             Dictionary<int, double> dict = new Dictionary<int, double>();
             Dictionary<int, double> dict_Sorted = new Dictionary<int, double>();
 
-            for (int i=0; i<rowCount; i++)
+            for (int i=0; i<=rowCount; i++)
             {
                 string query1 = "SELECT Average FROM Students WHERE Index_No = " + i;
                 SqlCommand cmd1 = new SqlCommand(query1, con);
@@ -96,7 +96,7 @@ namespace REPORTBYTE
             }
 
        
-            for (int i = 0; i < rowCount; i++)
+            for (int i = 0; i <= rowCount; i++)
             {
                 int position;
                 string query3 = "SELECT Position FROM Position WHERE [Index] = " + i;

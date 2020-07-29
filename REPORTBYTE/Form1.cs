@@ -85,7 +85,7 @@ namespace REPORTBYTE
 
             adaptor.Fill(set, "Students");
             dataGridView1.DataSource = set.Tables["Students"];
-            SqlCommandBuilder builder = new SqlCommandBuilder(adaptor);
+            //SqlCommandBuilder builder = new SqlCommandBuilder(adaptor);
             adaptor.Update(set.Tables["Students"]);
             con.Close();
 
@@ -101,11 +101,15 @@ namespace REPORTBYTE
             indiView.Visible = false;
             indiPrint.Visible = true;
 
+            Panel panel1 = new Panel();
+            this.Controls.Add(panel1);
 
-            Graphics g = this.CreateGraphics();
-            bmp = new Bitmap(this.Size.Width, this.Size.Width, g);
+            Graphics g = panel1.CreateGraphics();
+            Size formSize = this.ClientSize;
+            bmp = new Bitmap(formSize.Width, formSize.Height, g);
+            //bmp = new Bitmap(printPanel.Size.Width, printPanel.Size.Width, g);
             Graphics mg = Graphics.FromImage(bmp);
-            mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
+            mg.CopyFromScreen(panel1.Location.X, panel1.Location.Y, 0, 0, formSize);
             printPreviewDialog1.ShowDialog();
 
 

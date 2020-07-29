@@ -26,7 +26,7 @@ namespace REPORTBYTE
 
         public void delTeacher()
         {
-            string query = "DELETE FROM subject";
+            string query = "DELETE FROM subject WHERE Subject_Teacher";
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.ExecuteNonQuery();
         }

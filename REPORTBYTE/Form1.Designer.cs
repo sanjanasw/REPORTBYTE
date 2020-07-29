@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tableHome = new System.Windows.Forms.TableLayoutPanel();
             this.panelInsert = new System.Windows.Forms.Panel();
+            this.printPanel = new System.Windows.Forms.TableLayoutPanel();
             this.viewPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panelResults = new System.Windows.Forms.Panel();
             this.panelAllResults = new System.Windows.Forms.Panel();
@@ -89,7 +90,6 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.printPanel = new System.Windows.Forms.TableLayoutPanel();
             this.InsertPanel = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonLastest6 = new ButtonDemo.ButtonLastest();
@@ -218,6 +218,24 @@
             this.panelInsert.Name = "panelInsert";
             this.panelInsert.Size = new System.Drawing.Size(1222, 504);
             this.panelInsert.TabIndex = 0;
+            // 
+            // printPanel
+            // 
+            this.printPanel.AutoScroll = true;
+            this.printPanel.BackColor = System.Drawing.Color.White;
+            this.printPanel.ColumnCount = 2;
+            this.printPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.printPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.printPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.printPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.printPanel.Location = new System.Drawing.Point(0, 0);
+            this.printPanel.Name = "printPanel";
+            this.printPanel.RowCount = 3;
+            this.printPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.printPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2F));
+            this.printPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83F));
+            this.printPanel.Size = new System.Drawing.Size(1222, 504);
+            this.printPanel.TabIndex = 2;
             // 
             // viewPanel
             // 
@@ -970,24 +988,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(602, 1);
             this.panel2.TabIndex = 0;
-            // 
-            // printPanel
-            // 
-            this.printPanel.AutoScroll = true;
-            this.printPanel.BackColor = System.Drawing.Color.White;
-            this.printPanel.ColumnCount = 2;
-            this.printPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.printPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.printPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.printPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.printPanel.Location = new System.Drawing.Point(0, 0);
-            this.printPanel.Name = "printPanel";
-            this.printPanel.RowCount = 3;
-            this.printPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.printPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2F));
-            this.printPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83F));
-            this.printPanel.Size = new System.Drawing.Size(1222, 504);
-            this.printPanel.TabIndex = 2;
             // 
             // InsertPanel
             // 
@@ -1800,7 +1800,7 @@
             this.Controls.Add(this.tableSettings);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "REPORTBYTE";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.tableHome.ResumeLayout(false);
