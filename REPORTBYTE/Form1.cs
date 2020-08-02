@@ -28,12 +28,12 @@ namespace REPORTBYTE
             indiPrint.Visible = false;
             panel3.Visible = false;
             panel2.Visible = true;
-            panelStudentIndi.Visible = true;
+            panelStudentIndi.Visible = false;
             panelTeacherIndi.Visible = false;
-            panelMarksIndi.Visible = false;
-            tableLayoutPanelStudent.Visible = true;
+            panelMarksIndi.Visible = true;
+            tableLayoutPanelStudent.Visible = false;
             tableLayoutPanelTeacher.Visible = false;
-            tableLayoutPanelMarks.Visible = false;
+            tableLayoutPanelMarks.Visible = true;
             panelAllResults.Visible = true;
             panelStudentResults.Visible = false;
             label49.Visible = false;
@@ -46,7 +46,7 @@ namespace REPORTBYTE
             label49.Text = Convert.ToString(error);
             label49.Visible = true;
 
-            await Task.Delay(10000);
+            await Task.Delay(5000);
 
             label49.Text = "";
             label49.Visible = false;
@@ -100,19 +100,6 @@ namespace REPORTBYTE
             indiInsert.Visible = false;
             indiView.Visible = false;
             indiPrint.Visible = true;
-
-            Panel panel1 = new Panel();
-            this.Controls.Add(panel1);
-
-            Graphics g = panel1.CreateGraphics();
-            Size formSize = this.ClientSize;
-            bmp = new Bitmap(formSize.Width, formSize.Height, g);
-            //bmp = new Bitmap(printPanel.Size.Width, printPanel.Size.Width, g);
-            Graphics mg = Graphics.FromImage(bmp);
-            mg.CopyFromScreen(panel1.Location.X, panel1.Location.Y, 0, 0, formSize);
-            printPreviewDialog1.ShowDialog();
-
-
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -134,6 +121,7 @@ namespace REPORTBYTE
             tableHome.Visible = true;
             tableAbout.Visible = false;
             tableSettings.Visible = false;
+            timer("Settings Updated Sucessfull!!!");
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -226,8 +214,16 @@ namespace REPORTBYTE
         {
             try
             {
+                string name = textBox1.Text;
                 addStudent std = new addStudent();
-                timer(std.addSt(textBox1.Text));
+                if (name == "")
+                {
+                    timer("Name Can't Be Nulled!!!");
+                }
+                else
+                {
+                    timer(std.addSt(name));
+                }
             }            
             catch (Exception ex)
             {
@@ -239,70 +235,171 @@ namespace REPORTBYTE
         {
             try
             {
+                string name = textBox2.Text;
                 addSubject sub = new addSubject();
-                timer(sub.addSub(comboBox1.SelectedIndex + 1, textBox2.Text));
+                if (name == "")
+                {
+                    timer("Name Can't Be Nulled!!!");
+                }
+                else
+                {
+                    timer(sub.addSub(comboBox1.SelectedIndex + 1, name));
+                }
             }
             catch (Exception ex)
             {
-                timer(Convert.ToString(ex)); ;
+                timer(Convert.ToString(ex));
             }
 
         }
 
         private void buttonLastest11_Click(object sender, EventArgs e)
         {
-            int marks = Convert.ToInt32(textBox3.Text);
-            if (marks>100 || marks < 0)
+            try
             {
-                timer("Please Enter Correct Mark......");
+                int marks = Convert.ToInt32(textBox3.Text);
+                if (marks > 100 || marks < 0)
+                {
+                    timer("Please Enter Correct Mark......");
+                }
+                else
+                {
+                    try
+                    {
+                        addMarks mark = new addMarks();
+                        timer(mark.addMark((comboBox2.SelectedIndex + 1), (comboBox3.SelectedIndex + 1), Convert.ToInt32(textBox3.Text)));
+                    }
+                    catch (System.FormatException)
+                    {
+                        timer("Please Enter Correct Input Format......");
+                    }
+                    catch (Exception ex)
+                    {
+                        timer(Convert.ToString(ex));
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                try
-                {
-                    addMarks mark = new addMarks();
-                    timer(mark.addMark((comboBox2.SelectedIndex + 1), (comboBox3.SelectedIndex + 1), Convert.ToInt32(textBox3.Text)));
-                }
-                catch (System.FormatException)
-                {
-                    timer("Please Enter Correct Input Format......");
-                }
-                catch (Exception ex)
-                {
-                    timer(Convert.ToString(ex));
-                }
+                timer("Marks Can't Be Nulled!!!");
             }
 
         }
 
         private void buttonLastest12_Click(object sender, EventArgs e)
         {
-            string[] data = new string[17];
-            getStResault gst = new getStResault();
-            data = gst.getStudentResault(int.Parse(textBox4.Text));
+             Panel panel1 = new Panel();
+             this.Controls.Add(panel1);
 
-            label9.Text = "Name : " + data[1];
-            label10.Text = "Index No: " + data[0];
-            label47.Text = "Average : " + data[3];
-            label48.Text = "Position : " + data[4];
-            label13.Text = data[5];
-            label16.Text = data[6];
-            label19.Text = data[7];
-            label22.Text = data[8];
-            label25.Text = data[9];
-            label28.Text = data[10];
-            label31.Text = data[11];
-            label34.Text = data[12];
-            label37.Text = data[13];
-            label40.Text = data[14];
-            label43.Text = data[15];
-            label46.Text = data[16];
+             Graphics g = panel1.CreateGraphics();
+             Size formSize = this.ClientSize;
+             bmp = new Bitmap(formSize.Width, formSize.Height, g);
+             //bmp = new Bitmap(printPanel.Size.Width, printPanel.Size.Width, g);
+             Graphics mg = Graphics.FromImage(bmp);
+             mg.CopyFromScreen(panel1.Location.X, panel1.Location.Y, 0, 0, formSize);
+             printPreviewDialog1.ShowDialog();
 
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(bmp, 0, 0);
+        }
+
+        private void st_tech()
+        {
+            
+        }
+
+        private void buttonLastest17_Click(object sender, EventArgs e)
+        {
+            panel3.Visible = true;
+            panel2.Visible = false;
+            panelAllResults.Visible = false;
+            panelStudentResults.Visible = true;
+        }
+
+        private void buttonLastest16_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string[] data = new string[17];
+                getStResault gst = new getStResault();
+                data = gst.getStudentResault(int.Parse(textBox4.Text));
+
+                label9.Text = "Name : " + data[1];
+                label10.Text = "Index No: " + data[0];
+                label47.Text = "Average : " + data[3];
+                label48.Text = "Position : " + data[4];
+                label13.Text = data[5];
+                label16.Text = data[6];
+                label19.Text = data[7];
+                label22.Text = data[8];
+                label25.Text = data[9];
+                label28.Text = data[10];
+                label31.Text = data[11];
+                label34.Text = data[12];
+                label37.Text = data[13];
+                label40.Text = data[14];
+                label43.Text = data[15];
+                label46.Text = data[16];
+
+            }
+            catch(Exception ex)
+            {
+                timer(Convert.ToString(ex));
+            }
+        }
+
+        private void buttonLastest15_Click(object sender, EventArgs e)
+        {
+            updateStudent upst = new updateStudent();
+            upst.getvalues();
+            upst.setPosition();
+
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\SHATTER\source\repos\REPORTBYTE\repoBite.mdf;Integrated Security=True;Connect Timeout=30");
+            con.Open();
+
+            //get value from teacher name. pass value +1 to get marks
+            int value = comboBox4.SelectedIndex+1;
+
+            string query = "SELECT Index_No, Name, Sub" + value + "  FROM Students";
+            SqlDataAdapter adaptor = new SqlDataAdapter(query, con);
+            DataSet set = new DataSet();
+
+            try
+            {
+                adaptor.Fill(set, "Students");
+                dataGridView2.DataSource = set.Tables["Students"];
+                adaptor.Update(set.Tables["Students"]);
+                con.Close();
+
+            }catch(Exception ex)
+            {
+                timer(Convert.ToString(ex));
+            }
+        }
+
+        private void buttonLastest13_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure to reset Yes/No", "Reset", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                delData del = new delData();
+                del.delStudent();
+            }
+        }
+
+        private void buttonLastest14_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure to reset Yes/No", "Reset", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                delData del = new delData();
+                del.delTeacher();
+            }
         }
     }
 }
