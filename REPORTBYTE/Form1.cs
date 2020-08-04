@@ -43,7 +43,7 @@ namespace REPORTBYTE
 
         public async void timer(string error)
         {
-            label49.Text = Convert.ToString(error);
+            label49.Text = "   " + Convert.ToString(error);
             label49.Visible = true;
 
             await Task.Delay(5000);
@@ -79,7 +79,7 @@ namespace REPORTBYTE
             SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\SHATTER\source\repos\REPORTBYTE\repoBite.mdf;Integrated Security=True;Connect Timeout=30");
             con.Open();
 
-            string query = "SELECT * FROM Students";
+            string query = "SELECT Index_No, Name, Position, Sub1, Sub2, Sub3, Sub4, Sub5, Sub6, Sub7, Sub8, Sub9, Sub10, Sub11, Sub12, Total_Marks, Average  FROM Students";
             SqlDataAdapter adaptor = new SqlDataAdapter(query, con);
             DataSet set = new DataSet();
 
@@ -279,7 +279,7 @@ namespace REPORTBYTE
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 timer("Marks Can't Be Nulled!!!");
             }
@@ -363,7 +363,7 @@ namespace REPORTBYTE
             //get value from teacher name. pass value +1 to get marks
             int value = comboBox4.SelectedIndex+1;
 
-            string query = "SELECT Index_No, Name, Sub" + value + "  FROM Students";
+            string query = "SELECT Index_No, Name, Sub" + value + ",Position  FROM Students";
             SqlDataAdapter adaptor = new SqlDataAdapter(query, con);
             DataSet set = new DataSet();
 
@@ -382,7 +382,7 @@ namespace REPORTBYTE
 
         private void buttonLastest13_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure to reset Yes/No", "Reset", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Are You Sure To Reset All Yes/No", "Reset", MessageBoxButtons.YesNo);
 
             if (dialogResult == DialogResult.Yes)
             {
@@ -393,7 +393,7 @@ namespace REPORTBYTE
 
         private void buttonLastest14_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure to reset Yes/No", "Reset", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("Are You Sure To Reset All Yes/No", "Reset", MessageBoxButtons.YesNo);
 
             if (dialogResult == DialogResult.Yes)
             {
@@ -401,5 +401,6 @@ namespace REPORTBYTE
                 del.delTeacher();
             }
         }
+
     }
 }
