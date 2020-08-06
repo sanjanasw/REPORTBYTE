@@ -38,9 +38,9 @@ namespace REPORTBYTE
                 {
                     report[0] = Convert.ToString(reader["Index_No"]);
                     report[1] = Convert.ToString(reader["Name"]);
-                        report[2] = Convert.ToString(reader["Total_Marks"]);
-                        report[3] = Convert.ToString(reader["Average"]);
-                        report[4] = Convert.ToString(reader["Position"]);
+                    report[2] = Convert.ToString(reader["Total_Marks"]);
+                    report[3] = Convert.ToString(reader["Average"]);
+                    report[4] = Convert.ToString(reader["Position"]);
                     if(report[2]=="")
                     {
                         report[2] = "N/A";
@@ -53,11 +53,8 @@ namespace REPORTBYTE
                     {
                         report[4] = "N/A";
                     }
-
-
                 }
             }
-
             report[5] = getmark(index, 1);
             report[6] = getmark(index, 2);
             report[7] = getmark(index, 3);

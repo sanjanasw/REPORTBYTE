@@ -17,14 +17,11 @@ namespace REPORTBYTE
             SqlCommand cmd = new SqlCommand(query, con);
             string query1 = "DELETE FROM Marks";
             SqlCommand cmd1 = new SqlCommand(query1, con);
-            string query2 = "DELETE FROM Position";
-            SqlCommand cmd2 = new SqlCommand(query2, con);
             try
             {
                 con.Open();
                 cmd.ExecuteNonQuery();
                 cmd1.ExecuteNonQuery();
-                cmd2.ExecuteNonQuery();
                 MessageBox.Show("Reset Succesfull......");
             }
             catch (SqlException ex)

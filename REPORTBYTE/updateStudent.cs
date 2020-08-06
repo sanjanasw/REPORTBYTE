@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace REPORTBYTE
 {
@@ -27,7 +28,7 @@ namespace REPORTBYTE
             {
                 int tot = 0;
 
-                for (int k = 0; k < 12; k++)
+                for (int k = 0; k < 13; k++)
                 {
                     string query2 = "SELECT Marks FROM MARKS WHERE Student_Id = " + i + " AND Subject_Id = " + k;
                     SqlCommand cmd2 = new SqlCommand(query2, con);
@@ -40,7 +41,7 @@ namespace REPORTBYTE
                         }
                     }
                 }
-                double avg = tot / 12;
+                double avg = Math.Round((tot / 12.0), 3);
                 string query1 = "UPDATE Students SET Total_Marks = "+ tot + ", Average = " + avg + " WHERE Index_No = " + i;
                 SqlCommand cmd1 = new SqlCommand(query1, con);
                     cmd1.ExecuteNonQuery();

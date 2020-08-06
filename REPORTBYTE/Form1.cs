@@ -90,6 +90,7 @@ namespace REPORTBYTE
             con.Close();
 
 
+
         }
 
         private void buttonLastest3_Click_1(object sender, EventArgs e)
@@ -167,6 +168,10 @@ namespace REPORTBYTE
                     if (reader.Read())
                     {
                         label2.Text =  Convert.ToString(Convert.ToInt32(reader["Index_No"])+1);
+                    }
+                    else
+                    {
+                        label2.Text = "1";
                     }
                 }
                 con.Close();
@@ -288,16 +293,28 @@ namespace REPORTBYTE
 
         private void buttonLastest12_Click(object sender, EventArgs e)
         {
-             Panel panel1 = new Panel();
-             this.Controls.Add(panel1);
+            buttonLastest1.Visible = false;
+            buttonLastest2.Visible = false;
+            buttonLastest3.Visible = false;
+            buttonLastest7.Visible = false;
+            buttonLastest17.Visible = false;
 
-             Graphics g = panel1.CreateGraphics();
-             Size formSize = this.ClientSize;
-             bmp = new Bitmap(formSize.Width, formSize.Height, g);
-             //bmp = new Bitmap(printPanel.Size.Width, printPanel.Size.Width, g);
-             Graphics mg = Graphics.FromImage(bmp);
-             mg.CopyFromScreen(panel1.Location.X, panel1.Location.Y, 0, 0, formSize);
-             printPreviewDialog1.ShowDialog();
+            Panel panel1 = new Panel();
+            this.Controls.Add(panel1);
+            
+            Graphics g = panel1.CreateGraphics();
+            Size formSize = this.ClientSize;
+            bmp = new Bitmap(formSize.Width, formSize.Height, g);
+            //bmp = new Bitmap(printPanel.Size.Width, printPanel.Size.Width, g);
+            Graphics mg = Graphics.FromImage(bmp);
+            mg.CopyFromScreen(panel1.Location.X, panel1.Location.Y, 0, 0, formSize);
+            printPreviewDialog1.ShowDialog();
+
+            buttonLastest1.Visible = true;
+            buttonLastest2.Visible = true;
+            buttonLastest3.Visible = true;
+            buttonLastest7.Visible = true;
+            buttonLastest17.Visible = true;
 
         }
 
