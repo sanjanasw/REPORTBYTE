@@ -81,7 +81,6 @@
     <Compile Include="ButtonLatest.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="delData.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
