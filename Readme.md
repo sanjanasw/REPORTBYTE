@@ -1,4 +1,5 @@
-#Reportbyte
+# Reportbyte
+
 This Information system is built for academic purpose from the perspective of 
 improving the report generator for student examination result as a platform for 
 teacher-student interaction made in a classroom setting. The software we built we 
@@ -14,7 +15,7 @@ The software we built is identified using SAD module using .NET framework
 developed for desktop built supporting cross-platform windows desktop application 
 with using C# language along with the CRUD operations such as Create, Update 
 & Delete functions. The IDE which has been used to develop the system is Visual 
-Studio 2020 newest version and C# is a language which is productive, multipurpose and type-safe, object oriented and open source therefore designing this 
+Studio 2020 newest version and C# is a language which is productive, multi purpose and type-safe, object oriented and open source therefore designing this 
 application run on .NET framework in Visual Studio provides with a rich code 
 analysis for API’s along with the .NET complier helps to edit and debug with live 
 assistance. 
